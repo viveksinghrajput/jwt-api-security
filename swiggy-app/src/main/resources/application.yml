@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: SWIGGY-APP
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8761/eureka/
+
+retry:
+  instances:
+    swiggiApp:
+      maxRetryAttempts: 5
+      waitDuration: 10s
