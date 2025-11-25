@@ -7,9 +7,9 @@ curl --location --request POST 'http://localhost:8080/auth/register' \
 --header 'Content-Type: application/json' \
 --header 'Cookie: JSESSIONID=7CE91EE75A65277C0DCB6C5736C5DF5D' \
 --data-raw '{
-    "name":"Basant",
+    "name":"vivek",
     "password":"Pwd1",
-    "email":"basant@gmail.com"
+    "email":"vivek@gmail.com"
 }'
 
 ```
@@ -21,7 +21,7 @@ curl --location --request POST 'http://localhost:9898/auth/token' \
 --header 'Content-Type: application/json' \
 --header 'Cookie: JSESSIONID=7CE91EE75A65277C0DCB6C5736C5DF5D' \
 --data-raw '{
-    "username":"Basant",
+    "username":"vivek",
     "password":"Pwd1"
 }'
 ```
@@ -29,7 +29,7 @@ curl --location --request POST 'http://localhost:9898/auth/token' \
 
 ```
 curl --location --request GET 'http://localhost:8080/swiggy/37jbd832' \
---header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJCYXNhbnQiLCJpYXQiOjE2NzkwNTU4MDIsImV4cCI6MTY3OTA1NzYwMn0.Q0bwS5_16q1Z8K-p_flpmyRoJNFCyOhU2AMKSNYh66o' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aXZlayIsImlhdCI6MTc2NDA3MjAyNCwiZXhwIjoxNzY0MDczODI0fQ.kP2SmIz9sKiJ6JmC3ZSz4CIMk3MrzRNpVRBko0mrxZs' \
 --header 'Cookie: JSESSIONID=7CE91EE75A65277C0DCB6C5736C5DF5D'
 ```
 
