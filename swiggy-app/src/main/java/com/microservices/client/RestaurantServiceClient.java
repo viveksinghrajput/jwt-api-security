@@ -5,19 +5,27 @@ import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.sql.Date;
 
 @Component
 public class RestaurantServiceClient {
+  /*  @Autowired
+    private RestTemplate template;*/
+
     @Autowired
-    private RestTemplate template;
+    private WebClient webClient;
 
     private final String SWIGGI_APP="swiggiApp";
 
     @Retry(name =SWIGGI_APP,fallbackMethod = "fallbackForApiCall")
     public OrderResponseDTO fetchOrderStatus(String orderId) {
-        return template.getForObject("http://RESTAURANT-SERVICE/restaurant/orders/status/" + orderId, OrderResponseDTO.class);
+      return   webClient
+              .get()
+              .uri("http://RESTAURANT-SERVICE/restaurant/orders/status/" + orderId)
+              .retrieve().bodyToMono(OrderResponseDTO.class).block();
+        //return template.getForObject("http://RESTAURANT-SERVICE/restaurant/orders/status/" + orderId, OrderResponseDTO.class);
     }
     public OrderResponseDTO fallbackForApiCall(Exception t) {
         System.out.println("Fallback method executed due to: " + t.getMessage());
